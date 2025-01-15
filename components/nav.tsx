@@ -53,7 +53,7 @@ export default function Nav() {
                         <Button
                           variant="ghost"
                           size="icon"
-                          className="text-xl transition-colors duration-200 hover:text-primary"
+                          className="text-2xl transition-colors duration-200 hover:text-primary"
                           asChild
                         >
                           <a href={href} aria-label={label}>
@@ -64,7 +64,7 @@ export default function Nav() {
                       <TooltipContent
                         side="bottom"
                         align="center"
-                        className="bg-primary text-primary-foreground"
+                        className="bg-primary text-primary-foreground text-base"
                       >
                         <p>{label}</p>
                       </TooltipContent>

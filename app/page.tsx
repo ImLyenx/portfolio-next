@@ -32,7 +32,9 @@ export default function Home() {
         </span>
 
         <p className="mt-16 gap-2 text-2xl md:mt-24 md:text-3xl">
-          <span className="text-contrast font-bold">Full-stack developer,</span>
+          <span className="text-contrast font-bold">
+            Full-stack developer,{" "}
+          </span>
           <span className="">
             student, musician, gamer, and all sorts of things.
           </span>
