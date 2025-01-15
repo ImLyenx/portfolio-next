@@ -3,6 +3,7 @@ import { Alex_Brush, Inter } from "next/font/google";
 import Nav from "@/components/nav";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import Footer from "@/components/footer";
 
 const AlexBrush = Alex_Brush({
   weight: "400",
@@ -40,6 +41,7 @@ export default function RootLayout({
             <Toaster />
           </div>
         </div>
+        <Footer />
       </body>
     </html>
   );
