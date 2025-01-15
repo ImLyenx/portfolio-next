@@ -8,6 +8,11 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Home - Lyenx",
+};
 
 export default function Home() {
   return (

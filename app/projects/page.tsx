@@ -10,6 +10,11 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Projects - Lyenx",
+};
 
 export default function ProjectsPage() {
   return (
