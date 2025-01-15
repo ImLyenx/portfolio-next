@@ -1,17 +1,3 @@
----
-layout: ../../layouts/PostLayout.astro
-title: VALORANT Clone
-tags:
-  [
-    { "name": "Vite", "color": "#ffab03", icon: "simple-icons:vite" },
-    { "name": "React", "color": "#06bfef", icon: "simple-icons:react" },
-    { "name": "Python", "color": "#4584b6", icon: "simple-icons:python" },
-    { "name": "AIOHTTP", "color": "#2c5bb4", icon: "simple-icons:aiohttp" },
-  ]
-description: Recreation of the VALORANT in-game interface (Main menu, Store, Collection, Career)
-demo: https://val.lyenx.com
----
-
 ## Context
 
 In VALORANT, there is a lot of information that is available _via_ the API but hidden to the player in the game client (by this I mean the skin loadouts of the other players in your lobby, NOT the real names of players that have Streamer Mode enabled. And I will not add this since it's against Riot's Terms of Service.), or not accessible outside of the game itself, which makes it very difficult to access that data without giving third-party apps access to your account, which means trusting some random developer with your whole Riot Games account. I wanted to change that (for myself only, this wasn't meant to be a public project), so I built a full website allowing me to sign in with my Riot Games account, with the exact same inteface as the official game client, and it was way more difficult than I thought it'd be.

@@ -28,6 +28,7 @@ export default function Nav() {
             <li
               className="tooltip tooltip-bottom tooltip-primary rounded-xl"
               data-tip={label}
+              key={href}
             >
               <Button variant="ghost" size="icon" asChild>
                 <a href={href} aria-label={label}>
@@ -48,8 +49,13 @@ export default function Nav() {
             <ul className="menu menu-vertical">
               {navItems.map(
                 ({ href, label }: { href: string; label: string }) => (
-                  <li>
-                    <Button variant="ghost" asChild className="text-lg">
+                  <li key={href}>
+                    <Button
+                      variant="ghost"
+                      asChild
+                      className="text-lg"
+                      key={href}
+                    >
                       <a href={href}>{label}</a>
                     </Button>
                   </li>
@@ -60,6 +66,7 @@ export default function Nav() {
                   <li
                     className="tooltip tooltip-bottom tooltip-primary"
                     data-tip={label}
+                    key={href}
                   >
                     <Button variant="ghost" size="icon" asChild>
                       <a href={href}>

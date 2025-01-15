@@ -34,7 +34,7 @@ export default function RootLayout({
       >
         <div className="w-full max-w-5xl flex-grow">
           <Nav />
-          <div className="animate-content-fade pb-32 md:pb-28">{children}</div>
+          <div className="animate-content-fade pb-32 md:pb-28 ">{children}</div>
         </div>
       </body>
     </html>
