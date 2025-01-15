@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Alex_Brush, Inter } from "next/font/google";
 import Nav from "@/components/nav";
 import "./globals.css";
+import { Toaster } from "@/components/ui/toaster";
 
 const AlexBrush = Alex_Brush({
   weight: "400",
@@ -34,7 +35,10 @@ export default function RootLayout({
       >
         <div className="w-full max-w-5xl flex-grow">
           <Nav />
-          <div className="animate-content-fade pb-32 md:pb-28 ">{children}</div>
+          <div className="animate-content-fade pb-32 md:pb-28 ">
+            {children}
+            <Toaster />
+          </div>
         </div>
       </body>
     </html>
