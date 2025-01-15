@@ -1,6 +1,7 @@
 import { Icon } from "@iconify-icon/react";
 import { socialItems } from "@/data/socials";
 import { skills } from "@/data/skills";
+import { education } from "@/data/education";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
@@ -8,7 +9,9 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Metadata } from "next";
+import { experience } from "@/data/experience";
 
 export const metadata: Metadata = {
   title: "Home - Lyenx",
@@ -92,6 +95,69 @@ export default function Home() {
             </a>
             !
           </p>
+        </div>
+        <div className="mt-24 flex flex-col gap-6">
+          <h2 className="text-contrast border-l-4 border-l-primary pl-4 font-bold">
+            Experience
+          </h2>
+          {experience.map(
+            ({ title, company, dates, location, description }) => (
+              <Card key={title} className="border shadow-sm">
+                <CardHeader>
+                  <div className="flex flex-col space-y-1.5">
+                    <div className="space-y-1 mb-2">
+                      <h3 className="text-2xl font-semibold leading-none tracking-tight mb-1">
+                        {title}
+                      </h3>
+                      <p className="text-base font-medium">{company}</p>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-4 text-sm ">
+                      <div className="flex items-center gap-1.5">
+                        <Icon icon="lucide:calendar" className="h-4 w-4" />
+                        <span>{dates}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <Icon icon="lucide:map-pin" className="h-4 w-4" />
+                        <span>{location}</span>
+                      </div>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-base">{description}</p>
+                </CardContent>
+              </Card>
+            )
+          )}
+        </div>
+        <div className="mt-24 flex flex-col gap-6">
+          <h2 className="text-contrast border-l-4 border-l-primary pl-4 font-bold">
+            Education
+          </h2>
+          {education.map(({ name, dates, place, description }) => (
+            <Card key={name} className="border shadow-sm">
+              <CardHeader>
+                <div className="flex flex-col space-y-1.5">
+                  <h3 className="text-2xl font-semibold leading-none tracking-tight mb-2">
+                    {name}
+                  </h3>
+                  <div className="flex flex-wrap items-center gap-4 text-sm">
+                    <div className="flex items-center gap-1.5">
+                      <Icon icon="lucide:calendar" className="h-4 w-4" />
+                      <span>{dates}</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <Icon icon="lucide:map-pin" className="h-4 w-4" />
+                      <span>{place}</span>
+                    </div>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-base">{description}</p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
         <div className="mt-24 flex flex-col gap-6">
           <h2 className="text-contrast border-l-4 border-l-primary pl-4 font-bold">
