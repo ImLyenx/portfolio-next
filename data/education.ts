@@ -1,4 +1,4 @@
-export const education = [
+export const education: EducationItem[] = [
   {
     name: "Bachelor of Coding & Digital Innovation",
     dates: "2018 - 2022",
@@ -13,3 +13,10 @@ export const education = [
     description: "Baccalaureate",
   },
 ];
+
+export type EducationItem = {
+  name: string;
+  dates: string;
+  place: string;
+  description: string;
+};

@@ -1,4 +1,4 @@
-export const socialItems = [
+export const socialItems: SocialItem[] = [
   {
     label: "GitHub",
     href: "https://github.com/ImLyenx",
@@ -15,3 +15,9 @@ export const socialItems = [
     icon: "carbon:email",
   },
 ];
+
+export type SocialItem = {
+  label: string;
+  href: string;
+  icon: string;
+};

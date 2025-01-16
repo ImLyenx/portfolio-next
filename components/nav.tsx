@@ -5,10 +5,8 @@ import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
-  NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuList,
-  NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import {
@@ -34,44 +32,56 @@ export default function Nav() {
           {/* Desktop Navigation */}
           <NavigationMenu className="hidden md:flex">
             <NavigationMenuList className="gap-3">
-              {navItems.map(({ href, label }) => (
-                <NavigationMenuItem key={href}>
-                  <Button
-                    variant="ghost"
-                    asChild
-                    className="text-xl font-medium transition-colors duration-200 hover:text-primary"
-                  >
-                    <a href={href}>{label}</a>
-                  </Button>
-                </NavigationMenuItem>
-              ))}
-              {socialItems.map(({ href, label, icon }) => (
-                <NavigationMenuItem key={href}>
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger asChild>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          className="text-2xl transition-colors duration-200 hover:text-primary"
-                          asChild
+              {navItems.map(
+                ({ href, label }: { href: string; label: string }) => (
+                  <NavigationMenuItem key={href}>
+                    <Button
+                      variant="ghost"
+                      asChild
+                      className="text-xl font-medium transition-colors duration-200 hover:text-primary"
+                    >
+                      <a href={href}>{label}</a>
+                    </Button>
+                  </NavigationMenuItem>
+                )
+              )}
+              {socialItems.map(
+                ({
+                  href,
+                  label,
+                  icon,
+                }: {
+                  href: string;
+                  label: string;
+                  icon: string;
+                }) => (
+                  <NavigationMenuItem key={href}>
+                    <TooltipProvider>
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            className="text-2xl transition-colors duration-200 hover:text-primary"
+                            asChild
+                          >
+                            <a href={href} aria-label={label}>
+                              <Icon icon={icon} />
+                            </a>
+                          </Button>
+                        </TooltipTrigger>
+                        <TooltipContent
+                          side="bottom"
+                          align="center"
+                          className="bg-primary text-primary-foreground text-base"
                         >
-                          <a href={href} aria-label={label}>
-                            <Icon icon={icon} />
-                          </a>
-                        </Button>
-                      </TooltipTrigger>
-                      <TooltipContent
-                        side="bottom"
-                        align="center"
-                        className="bg-primary text-primary-foreground text-base"
-                      >
-                        <p>{label}</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
-                </NavigationMenuItem>
-              ))}
+                          <p>{label}</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </TooltipProvider>
+                  </NavigationMenuItem>
+                )
+              )}
             </NavigationMenuList>
           </NavigationMenu>
 
@@ -84,39 +94,51 @@ export default function Nav() {
             </SheetTrigger>
             <SheetContent side="right" className="w-[280px] sm:w-[360px]">
               <nav className="flex flex-col gap-6 pt-6">
-                {navItems.map(({ href, label }) => (
-                  <Button
-                    key={href}
-                    variant="ghost"
-                    asChild
-                    className="justify-start text-lg transition-colors duration-200 hover:text-primary"
-                  >
-                    <a href={href}>{label}</a>
-                  </Button>
-                ))}
+                {navItems.map(
+                  ({ href, label }: { href: string; label: string }) => (
+                    <Button
+                      key={href}
+                      variant="ghost"
+                      asChild
+                      className="justify-start text-lg transition-colors duration-200 hover:text-primary"
+                    >
+                      <a href={href}>{label}</a>
+                    </Button>
+                  )
+                )}
                 <Separator />
                 <div className="flex gap-2">
-                  {socialItems.map(({ href, label, icon }) => (
-                    <TooltipProvider key={href}>
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="text-xl"
-                            asChild
-                          >
-                            <a href={href} aria-label={label}>
-                              <Icon icon={icon} />
-                            </a>
-                          </Button>
-                        </TooltipTrigger>
-                        <TooltipContent side="bottom">
-                          <p>{label}</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
-                  ))}
+                  {socialItems.map(
+                    ({
+                      href,
+                      label,
+                      icon,
+                    }: {
+                      href: string;
+                      label: string;
+                      icon: string;
+                    }) => (
+                      <TooltipProvider key={href}>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button
+                              variant="ghost"
+                              size="icon"
+                              className="text-xl"
+                              asChild
+                            >
+                              <a href={href} aria-label={label}>
+                                <Icon icon={icon} />
+                              </a>
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent side="bottom">
+                            <p>{label}</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    )
+                  )}
                 </div>
               </nav>
             </SheetContent>

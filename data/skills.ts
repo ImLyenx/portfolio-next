@@ -1,4 +1,4 @@
-export const skills = [
+export const skills: SkillCategory[] = [
   {
     name: "Languages",
     items: [
@@ -160,3 +160,13 @@ export const skills = [
     ],
   },
 ];
+
+export type SkillCategory = {
+  name: string;
+  items: SkillItem[];
+};
+
+export type SkillItem = {
+  label: string;
+  icon: string;
+};

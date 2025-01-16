@@ -1,4 +1,4 @@
-export const experience = [
+export const experience: ExperienceItem[] = [
   {
     title: "Project Manager",
     company: "Lexo",
@@ -21,3 +21,11 @@ export const experience = [
     description: "Internship",
   },
 ];
+
+export type ExperienceItem = {
+  title: string;
+  company: string;
+  location: string;
+  dates: string;
+  description: string;
+};

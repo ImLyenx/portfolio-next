@@ -1,7 +1,8 @@
 import { Icon } from "@iconify-icon/react";
-import { socialItems } from "@/data/socials";
-import { skills } from "@/data/skills";
-import { education } from "@/data/education";
+import { socialItems, SocialItem } from "@/data/socials";
+import { skills, SkillCategory, SkillItem } from "@/data/skills";
+import { education, EducationItem } from "@/data/education";
+import { experience, ExperienceItem } from "@/data/experience";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
@@ -11,7 +12,7 @@ import {
 } from "@/components/ui/tooltip";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Metadata } from "next";
-import { experience } from "@/data/experience";
+import HomePageSection from "@/components/home-page-section";
 
 export const metadata: Metadata = {
   title: "Home - Lyenx",
@@ -43,7 +44,7 @@ export default function Home() {
           </span>
         </p>
         <div className="mt-16 flex gap-2">
-          {socialItems.map(({ href, label, icon }) => (
+          {socialItems.map(({ href, label, icon }: SocialItem) => (
             <Button
               variant="ghost"
               size="sm"
@@ -61,10 +62,7 @@ export default function Home() {
             </Button>
           ))}
         </div>
-        <div className="mt-24 flex flex-col gap-4">
-          <h2 className="text-contrast border-l-4 border-l-primary pl-4 font-bold">
-            About me
-          </h2>
+        <HomePageSection title="About me">
           <p className="text-lg">
             I'm an 18 years old Full-stack web developer based near Paris.
           </p>
@@ -95,13 +93,16 @@ export default function Home() {
             </a>
             !
           </p>
-        </div>
-        <div className="mt-24 flex flex-col gap-6">
-          <h2 className="text-contrast border-l-4 border-l-primary pl-4 font-bold">
-            Experience
-          </h2>
+        </HomePageSection>
+        <HomePageSection title="Experience">
           {experience.map(
-            ({ title, company, dates, location, description }) => (
+            ({
+              title,
+              company,
+              dates,
+              location,
+              description,
+            }: ExperienceItem) => (
               <Card key={title} className="border shadow-sm">
                 <CardHeader>
                   <div className="flex flex-col space-y-1.5">
@@ -129,45 +130,41 @@ export default function Home() {
               </Card>
             )
           )}
-        </div>
-        <div className="mt-24 flex flex-col gap-6">
-          <h2 className="text-contrast border-l-4 border-l-primary pl-4 font-bold">
-            Education
-          </h2>
-          {education.map(({ name, dates, place, description }) => (
-            <Card key={name} className="border shadow-sm">
-              <CardHeader>
-                <div className="flex flex-col space-y-1.5">
-                  <h3 className="text-2xl font-semibold leading-none tracking-tight mb-2">
-                    {name}
-                  </h3>
-                  <div className="flex flex-wrap items-center gap-4 text-sm">
-                    <div className="flex items-center gap-1.5">
-                      <Icon icon="lucide:calendar" className="h-4 w-4" />
-                      <span>{dates}</span>
-                    </div>
-                    <div className="flex items-center gap-1.5">
-                      <Icon icon="lucide:map-pin" className="h-4 w-4" />
-                      <span>{place}</span>
+        </HomePageSection>
+        <HomePageSection title="Education">
+          {education.map(
+            ({ name, dates, place, description }: EducationItem) => (
+              <Card key={name} className="border shadow-sm">
+                <CardHeader>
+                  <div className="flex flex-col space-y-1.5">
+                    <h3 className="text-2xl font-semibold leading-none tracking-tight mb-2">
+                      {name}
+                    </h3>
+                    <div className="flex flex-wrap items-center gap-4 text-sm">
+                      <div className="flex items-center gap-1.5">
+                        <Icon icon="lucide:calendar" className="h-4 w-4" />
+                        <span>{dates}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <Icon icon="lucide:map-pin" className="h-4 w-4" />
+                        <span>{place}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </CardHeader>
-              <CardContent>
-                <p className="text-base">{description}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-        <div className="mt-24 flex flex-col gap-6">
-          <h2 className="text-contrast border-l-4 border-l-primary pl-4 font-bold">
-            Tech I use
-          </h2>
-          {skills.map(({ name, items }) => (
+                </CardHeader>
+                <CardContent>
+                  <p className="text-base">{description}</p>
+                </CardContent>
+              </Card>
+            )
+          )}
+        </HomePageSection>
+        <HomePageSection title="Tech I use">
+          {skills.map(({ name, items }: SkillCategory) => (
             <div className="flex flex-col gap-3" key={name}>
               <h3 className="text-xl">&middot; {name} :</h3>
               <div className="flex flex-wrap gap-4">
-                {items.map(({ label, icon }) => (
+                {items.map(({ label, icon }: SkillItem) => (
                   <TooltipProvider key={label}>
                     <Tooltip>
                       <TooltipTrigger asChild>
@@ -182,7 +179,7 @@ export default function Home() {
               </div>
             </div>
           ))}
-        </div>
+        </HomePageSection>
       </div>
     </div>
   );
