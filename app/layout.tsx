@@ -5,6 +5,7 @@ import Nav from "@/components/nav";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import Footer from "@/components/footer";
+import Script from "next/script";
 
 // polices personnalisées
 const AlexBrush = Alex_Brush({
@@ -64,7 +65,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.3.0/dist/iconify-icon.min.js"></script>
+        <Script
+          src="https://cdn.jsdelivr.net/npm/iconify-icon@2.3.0/dist/iconify-icon.min.js"
+          strategy="beforeInteractive"
+        />
       </head>
       <body
         className={`${InterFont.variable} ${AlexBrush.variable} antialiased relative mx-6 flex min-h-screen flex-col items-center`}

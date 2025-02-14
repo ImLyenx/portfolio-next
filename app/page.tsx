@@ -4,6 +4,7 @@ import { socialItems, SocialItem } from "@/data/socials";
 import { Button } from "@/components/ui/button";
 import HomePageSection from "@/components/home-page-section";
 import { Metadata } from "next";
+import Link from "next/link";
 
 // métadonnées seo
 export const metadata: Metadata = {
@@ -18,7 +19,7 @@ export default function Home() {
     <div id="header" className="flex flex-col md:flex-row">
       <div className="flex max-w-5xl flex-col pt-8 align-bottom text-2xl md:pt-16">
         <span className="mb-3 text-2xl font-bold text-primary md:text-3xl">
-          Hey there, I'm-
+          Hey there, I&apos;m-
         </span>
         <span className="text-contrast text-7xl font-bold leading-[1] md:text-[10rem]">
           Eric Hubert.
@@ -38,36 +39,36 @@ export default function Home() {
 
         <HomePageSection title="About Me">
           <p className="text-lg">
-            I'm an 18 years old Full-stack web developer based near Paris.
+            I&apos;m an 18 years old Full-stack web developer based near Paris.
           </p>
           <p className="text-lg">
             Want to know more about me? Check out my{" "}
-            <a
+            <Link
               href="/about"
               className="underline-offset-3 font-medium underline"
             >
               about page
-            </a>
+            </Link>
             .
           </p>
           <p className="text-lg">
             I sometimes make cool things, you can learn more about them on the{" "}
-            <a
+            <Link
               href="/projects"
               className="underline-offset-3 font-medium underline"
             >
               projects
-            </a>{" "}
+            </Link>{" "}
             page.
           </p>
           <p className="text-lg">
             I am also always open to work, feel free to{" "}
-            <a
+            <Link
               href="/contact"
               className="underline-offset-3 font-medium underline"
             >
               send me a message
-            </a>
+            </Link>
             !
           </p>
         </HomePageSection>

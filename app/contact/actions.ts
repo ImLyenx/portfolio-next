@@ -45,10 +45,10 @@ export async function submitForm(formData: FormData) {
       }
     );
     if (!response.ok) {
-      return { error: "Failed to send message" };
+      throw new Error("Failed to send message");
     }
     return { success: true };
-  } catch (error) {
+  } catch {
     return { error: "Failed to send message" };
   }
 }

@@ -26,12 +26,12 @@ export default function AboutPage() {
       <div>
         <h1 className="text-4xl font-extrabold mb-8">About Me</h1>
         <p className="text-lg">
-          I'm an 18 years old Full-stack web developer based near Paris.
+          I&apos;m an 18 years old Full-stack web developer based near Paris.
         </p>
         <p className="text-lg">
-          I love coding, and computer-related things in general. I've been
+          I love coding, and computer-related things in general. I&apos;ve been
           coding since 2016, first by simply editing HTML files in Notepad, then
-          learning Scratch. More recently, I've been learning different
+          learning Scratch. More recently, I&apos;ve been learning different
           technologies, playing CTFs and having fun with my friends!
         </p>
       </div>
