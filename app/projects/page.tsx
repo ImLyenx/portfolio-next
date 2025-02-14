@@ -1,32 +1,58 @@
-import { posts, Post } from "@/data/posts";
+// page de projets avec filtrage par catégorie
+"use client";
+
+import { posts, Post, Tag } from "@/data/posts";
 import { Icon } from "@iconify-icon/react";
-import { Button } from "@/components/ui/button";
-import { Card, CardHeader, CardContent } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Metadata } from "next";
+import { useState } from "react";
 
-export const metadata: Metadata = {
-  title: "Projects - Lyenx",
-};
+// liste des catégories disponibles
+const categories = ["Web", "DevOps", "Miscellaneous"] as const;
 
 export default function ProjectsPage() {
+  // état pour le filtre de catégorie
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+
+  // filtrage des projets selon la catégorie
+  const filteredPosts = posts.filter((post) =>
+    selectedCategory ? post.category === selectedCategory : true
+  );
+
   return (
     <div className="-z-10 mx-auto md:z-0">
       <div className="mb-8 pt-8">
         <h1 className="text-4xl font-extrabold">My Projects</h1>
       </div>
+
+      <div className="flex flex-wrap gap-2 mb-8">
+        {categories.map((category) => (
+          <Badge
+            key={category}
+            variant={selectedCategory === category ? "default" : "secondary"}
+            className="cursor-pointer"
+            onClick={() => {
+              setSelectedCategory(
+                selectedCategory === category ? null : category
+              );
+            }}
+          >
+            {category}
+          </Badge>
+        ))}
+      </div>
+
       <div className="grid gap-8 md:grid-cols-[repeat(2,1fr)]">
-        {posts.map((entry: Post) => (
+        {filteredPosts.map((entry: Post) => (
           <Card key={entry.slug} className="w-full shadow-2xl">
             <CardContent className="p-6">
-              <div className="flex justify-between">
+              <div className="flex justify-between items-center">
                 <h2 className="text-2xl font-bold">
                   <a
                     className="font-extrabold underline underline-offset-4"
@@ -35,95 +61,74 @@ export default function ProjectsPage() {
                     {entry.title}
                   </a>
                 </h2>
-                <div className="flex min-w-[100px] gap-2">
-                  {entry.github ? (
+                <div className="flex items-center">
+                  {entry.github && (
                     <TooltipProvider>
                       <Tooltip>
-                        <TooltipTrigger>
-                          <Button variant="ghost" size="sm" asChild>
-                            <a
-                              href={`https://github.com/${entry.github}`}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <Icon
-                                icon="carbon:logo-github"
-                                className="text-xl"
-                              />
-                            </a>
-                          </Button>
+                        <TooltipTrigger asChild>
+                          <a
+                            href={entry.github}
+                            className="transition-colors hover:text-primary rounded-full p-2 hover:bg-muted"
+                          >
+                            <Icon icon="mdi:github" className="text-2xl" />
+                          </a>
                         </TooltipTrigger>
-                        <TooltipContent>View on GitHub</TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
-                  ) : (
-                    <TooltipProvider>
-                      <Tooltip>
-                        <TooltipTrigger className="cursor-not-allowed">
-                          <Button variant="ghost" size="sm" disabled>
-                            <Icon
-                              icon="carbon:logo-github"
-                              className="text-xl"
-                            />
-                          </Button>
-                        </TooltipTrigger>
-                        <TooltipContent className="bg-destructive">
-                          This project is closed-source
+                        <TooltipContent>
+                          <p>GitHub Repository</p>
                         </TooltipContent>
                       </Tooltip>
                     </TooltipProvider>
                   )}
-                  {entry.demo ? (
+                  {entry.demo && (
                     <TooltipProvider>
                       <Tooltip>
-                        <TooltipTrigger>
-                          <Button variant="ghost" size="sm" asChild>
-                            <a
-                              href={entry.demo}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <Icon icon="carbon:link" className="text-xl" />
-                            </a>
-                          </Button>
+                        <TooltipTrigger asChild>
+                          <a
+                            href={entry.demo}
+                            className="transition-colors hover:text-primary rounded-full p-2 hover:bg-muted"
+                          >
+                            <Icon
+                              icon="lucide:external-link"
+                              className="text-2xl"
+                            />
+                          </a>
                         </TooltipTrigger>
-                        <TooltipContent>Check it out!</TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
-                  ) : (
-                    <TooltipProvider>
-                      <Tooltip>
-                        <TooltipTrigger className="cursor-not-allowed">
-                          <Button variant="ghost" size="sm" disabled>
-                            <Icon icon="carbon:link" className="text-xl" />
-                          </Button>
-                        </TooltipTrigger>
-                        <TooltipContent className="bg-destructive">
-                          No demo available
+                        <TooltipContent>
+                          <p>Live Demo</p>
                         </TooltipContent>
                       </Tooltip>
                     </TooltipProvider>
                   )}
                 </div>
               </div>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {entry.tags.map((tag) => (
+              <p className="mt-4 text-base">{entry.description}</p>
+              <div className="mt-4 flex flex-wrap items-center gap-2">
+                <Badge
+                  variant="outline"
+                  className="text-xs font-medium px-2"
+                  style={{
+                    backgroundColor: "#000",
+                    borderColor: "#000",
+                    color: "#fff",
+                  }}
+                >
+                  {entry.category}
+                </Badge>
+                &middot;
+                {entry.tags.map((tag: Tag) => (
                   <Badge
                     key={tag.name}
+                    className="flex items-center gap-1.5 text-xs px-2 py-0.5"
                     style={{
-                      color: tag.color,
-                      backgroundColor: tag.color + "30",
-                      borderColor: tag.color + "30",
+                      backgroundColor: tag.color,
+                      color: "#fff",
                     }}
-                    className="py-1 px-2 font-semibold"
                   >
-                    <Icon icon={tag.icon} className="mr-2" />
+                    <Icon icon={tag.icon} className="h-3.5 w-3.5" />
                     {tag.name}
                   </Badge>
                 ))}
               </div>
-              <Separator className="my-4" />
-              <p>{entry.description}</p>
             </CardContent>
           </Card>
         ))}

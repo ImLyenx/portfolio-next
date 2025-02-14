@@ -2,6 +2,7 @@
 
 import { z } from "zod";
 
+// schéma de validation pour les données du formulaire
 const formSchema = z.object({
   name: z.string().min(2),
   email: z.string().email(),
@@ -9,6 +10,7 @@ const formSchema = z.object({
   message: z.string().min(10),
 });
 
+// on exporte la fonction qu'on appelle coté client
 export async function submitForm(formData: FormData) {
   const data = {
     name: formData.get("name"),
@@ -24,6 +26,7 @@ export async function submitForm(formData: FormData) {
   }
 
   try {
+    // on utilise Unsend pour envoyer l'email
     const response = await fetch(
       `${process.env.UNSEND_BASE_URL}/api/v1/emails`,
       {

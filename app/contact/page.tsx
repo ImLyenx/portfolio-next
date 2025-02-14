@@ -1,3 +1,4 @@
+// page de contact avec formulaire
 import ContactForm from "@/components/contact-form";
 import { Metadata } from "next";
 

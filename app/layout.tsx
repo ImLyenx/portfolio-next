@@ -1,3 +1,4 @@
+// layout principal avec navigation et footer
 import type { Metadata } from "next";
 import { Alex_Brush, Inter } from "next/font/google";
 import Nav from "@/components/nav";
@@ -5,6 +6,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import Footer from "@/components/footer";
 
+// polices personnalisées
 const AlexBrush = Alex_Brush({
   weight: "400",
   subsets: ["latin"],
@@ -16,11 +18,44 @@ const InterFont = Inter({
   variable: "--font-inter",
 });
 
+// configuration seo globale
 export const metadata: Metadata = {
+  title: {
+    default: "Lyenx - Full Stack Developer",
+    template: "%s | Lyenx",
+  },
   description:
-    "Lyenx's portfolio and blog, made with Next.js and Tailwind CSS.",
+    "Full-stack developer and tech enthusiast based in Paris. Specialized in web development, with experience in modern frameworks and technologies.",
+  keywords: [
+    "Full Stack Developer",
+    "Web Development",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Portfolio",
+  ],
+  authors: [{ name: "Eric Hubert" }],
+  creator: "Eric Hubert",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://lyenx.com",
+    title: "Lyenx - Full Stack Developer",
+    description: "Full-stack developer and tech enthusiast based in Paris",
+    siteName: "Lyenx Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lyenx - Full Stack Developer",
+    description: "Full-stack developer and tech enthusiast based in Paris",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
+// structure commune à toutes les pages
 export default function RootLayout({
   children,
 }: Readonly<{

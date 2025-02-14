@@ -7,6 +7,7 @@ export const posts: Post[] = [
       { name: "Linux", color: "#eebd1b", icon: "simple-icons:linux" },
       { name: "Coolify", color: "#8c52ff", icon: "simple-icons:c" },
     ],
+    category: "DevOps",
   },
   {
     slug: "miscelleanous",
@@ -23,6 +24,7 @@ export const posts: Post[] = [
       { name: "Slack", color: "#4A154B", icon: "simple-icons:slack" },
     ],
     github: "ImLyenx",
+    category: "Miscellaneous",
   },
   {
     slug: "portfolio",
@@ -39,6 +41,7 @@ export const posts: Post[] = [
     ],
     demo: "https://lyenx.com",
     github: "ImLyenx/lyenx.com",
+    category: "Web",
   },
   {
     slug: "valorant",
@@ -52,6 +55,7 @@ export const posts: Post[] = [
       { name: "AIOHTTP", color: "#2c5bb4", icon: "simple-icons:aiohttp" },
     ],
     demo: "https://val.lyenx.com",
+    category: "Web",
   },
 ];
 
@@ -62,6 +66,8 @@ export type Post = {
   tags: Tag[];
   demo?: string | null;
   github?: string | null;
+
+  category?: string;
 };
 
 export type Tag = {
