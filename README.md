@@ -11,6 +11,7 @@ mon portfolio réalisé avec next.js, typescript et tailwind css.
 
 > [!IMPORTANT]  
 > il vous faudra une instance d'[Unsend](https://unsend.dev) (selfhosted) pour envoyer des emails.
+> le site fonctionne sans, mais vous ne pourrez pas envoyer de messages via le formulaire de contact.
 
 ```bash
 # installer les dépendances
